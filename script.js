@@ -9,21 +9,27 @@ const personalMovieDB = {
 };
 
 function start() {
-	numberOfMovies = +prompt("How many movies you already watched?", "");
+	numberOfMovies = +prompt("How many movies you already watched?", "").trim();
 
 	while (
 		numberOfMovies == "" ||
 		numberOfMovies == null ||
 		isNaN(numberOfMovies)
 	) {
-		numberOfMovies = +prompt("How many movies you already watched?", "");
+		numberOfMovies = +prompt(
+			"How many movies you already watched?",
+			""
+		).trim();
 	}
 }
 
 function rememberMyFilms() {
 	for (let i = 0; i < 2; i++) {
-		const a = prompt("The name of the movie you are watching last", ""),
-			b = +prompt("What rating would you give this movie?", "");
+		const a = prompt(
+				"The name of the movie you are watching last",
+				""
+			).trim(),
+			b = +prompt("What rating would you give this movie?", "").trim();
 
 		if (a != null && b != null && a != "" && b != "" && a.length < 50) {
 			personalMovieDB.movies[a] = b;
@@ -60,10 +66,9 @@ function writeYourGenres() {
 	for (let i = 1; i <= 3; i++) {
 		personalMovieDB.genres[i - 1] = prompt(
 			`You favorite movies genre: ${i}`
-		);
+		).trim();
 	}
 }
-
 
 rememberMyFilms();
 detectPersonalLevel();
